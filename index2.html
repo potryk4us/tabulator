@@ -1,0 +1,48 @@
+
+<html lang="en" itemscope itemtype="http://schema.org/WebSite">
+
+    <head>
+      
+      <link href="https://unpkg.com/tabulator-tables@4.1.4/dist/css/tabulator.min.css" rel="stylesheet">
+      <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+      <script type="text/javascript" src="https://unpkg.com/tabulator-tables@5.1.4/dist/js/tabulator.min.js"></script>
+      
+      <script type="text/javascript" src="https://oss.sheetjs.com/sheetjs/xlsx.full.min.js"></script>
+         
+    </head>
+  
+      
+    <body>
+  
+  
+      <p> The table: </p>
+      <div>
+        <button id="ajax-trigger">Load Data via AJAX</button>
+    </div>
+    
+    <div id="example-table"></div>
+  
+      <script>
+
+//Build Tabulator
+var table = new Tabulator("#example-table", {
+    height:"311px",
+    layout:"fitColumns",
+    placeholder:"No Data Set",
+    columns:[
+        {title:"Name", field:"name", sorter:"string", width:200},
+        {title:"Occupation", field:"occupation", sorter:"string"},
+        {title:"Country", field:"country", sorter:"string"},
+    ],
+});
+
+//trigger AJAX load on "Load Data via AJAX" button click
+document.getElementById("ajax-trigger").addEventListener("click", function(){
+    table.setData("data.json");
+});
+  
+      </script>
+  
+    </body>
+  
+  </html>
